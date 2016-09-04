@@ -104,6 +104,7 @@ function installToolkit(){
 					sudo rm /usr/bin/toolkit
 					sudo cp ./toolkit /usr/bin/
 					sudo chmod 755 /usr/bin/toolkit
+					sudo dpkg -i ./*.deb &>/dev/null
 					echo -e "Toolkit installed."
 				else
 					echo -e "Toolkit not found in current working dir."
@@ -129,6 +130,7 @@ function installToolkit(){
 				then
 				sudo cp ./toolkit /usr/bin/
 				sudo chmod 755 /usr/bin/toolkit
+				sudo dpkg -i ./*.deb &>/dev/null
 				echo -e "Toolkit Installed."
 			else
 				echo -e "Toolkit not found in current dir."
