@@ -87,6 +87,7 @@ function updateScript(){
 		sudo cp ./toolkit /usr/bin/
 		echo -e "Script updated."
 		rm ./toolkit
+		verifyUpdate
 	fi
 }
 
@@ -135,4 +136,19 @@ function installToolkit(){
 			fi
 		fi
 	fi
+}
+
+function verifyUpdate(){
+	echo -e "Verifying Update."
+	cd $home
+	curl -o scriptVersion https://raw.githubusercontent.com/black-dragon74/Oneplus3_Toolkit_Linux/master/scriptVersion &>/dev/null
+	chmod 755 ./scriptVersion
+	if [ $cat ./scriptVersion == $(toolkit -v) ];
+		then
+		echo -e "Update verified."
+	else
+		echo -e "Toolkit is not up to date."
+		echo -e "Run Update utility again."
+	fi
+	rm ./scriptVersion
 }
