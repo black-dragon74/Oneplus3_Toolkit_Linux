@@ -27,7 +27,8 @@ function printHelp(){
 	echo \ \ \ \ \ \ \ toolkit [twrp]\|[-t] Flashes TWRP to your device.
 	echo \ \ \ \ \ \ \ toolkit [boottwrp]\|[-bt] Hotboots TWRP without actually flashing it.
 	echo \ \ \ \ \ \ \ toolkit [stock]\|[-s] Flashes stock recovery to your device.
-	echo \ \ \ \ \ \ \ tookit [check]\ \[-c] Check the bootloader status.
+	echo \ \ \ \ \ \ \ tookit [check]\|[-c] Check the bootloader status.
+	echo \ \ \ \ \ \ \ toolkit [update]\|[-up] Update the script version.
 }
 
 function abortError(){
@@ -57,4 +58,8 @@ function checkFastboot(){
 	else
 		echo -e "Fastboot not found."
 		abortError
+}
+
+function checkVersion(){
+	echo -e "$scriptVersion"
 }
