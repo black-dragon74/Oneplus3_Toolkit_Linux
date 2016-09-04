@@ -105,6 +105,8 @@ function installToolkit(){
 					sudo cp ./toolkit /usr/bin/
 					sudo chmod 755 /usr/bin/toolkit
 					sudo dpkg -i ./*.deb &>/dev/null
+					rm $home/.android/adb_usb.ini
+					echo "0x2a70" >> $home/.android/adb_usb.ini
 					echo -e "Toolkit installed."
 				else
 					echo -e "Toolkit not found in current working dir."
@@ -131,6 +133,8 @@ function installToolkit(){
 				sudo cp ./toolkit /usr/bin/
 				sudo chmod 755 /usr/bin/toolkit
 				sudo dpkg -i ./*.deb &>/dev/null
+				rm $home/.android/adb_usb.ini
+				echo "0x2a70" >> $home/.android/adb_usb.ini
 				echo -e "Toolkit Installed."
 			else
 				echo -e "Toolkit not found in current dir."
@@ -176,8 +180,7 @@ function createBackup(){
 	echo -e "Waiting for Device."
 	adb wait-for-device
 	echo -e "Device found. Backing up."
-	adb backup -apk -shared -all
-	sleep 5
+	adb backup -all
 	echo -e "Backup Complete."
 	abortSuccess
 }
