@@ -8,7 +8,7 @@
 
 # Variable Declarations
 author=black.dragon74
-scriptVersion=1.0
+scriptVersion=1.1
 home=$(echo $HOME)
 mName=$(uname -n)
 
