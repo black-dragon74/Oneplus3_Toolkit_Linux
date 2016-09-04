@@ -166,3 +166,50 @@ function checkInstall(){
 		abortError
 	fi
 }
+
+function main(){
+	case $1 in
+		[iI][nN][sS][tT][aA][lL]|[-][iI] )
+			installToolkit $1 $2
+			;;
+		[hH][eE][lL][pP]|[-][hH] )
+			printHelp
+			;;
+		[bB][aA][cC][kK][uU][pP]|[-][bB] )
+			createBackup
+			;;
+		[rR][eE][sS][tT][oO][rR][eE]|[-][rR] )
+			restoreBackup
+			;;
+		[uU][nN][lL][oO][cC][kK]|[-][uU] )
+			unlockDevice
+			;;
+		[lL][oO][cC][kK]|[-][lL] )
+			lockDevice
+			;;
+		[tT][wW][rR][pP]|[-][tT] )
+			flashTwrp
+			;;
+		[bB][oO][oO[tT][tT][wW][rR][pP]|[-][bB][tT] )
+			boottwrp
+			;;
+		[sS][tT][oO][cC][kK]|[-][sS] )
+			flashStock
+			;;
+		[cC][hH][eE][cC][kK]|[-][cC] )
+			checkBootloader
+			;;
+		[uU][pP][dD][aA][tT][eE]|[-][uU] )
+			updateScript
+			;;
+		* )
+			printHelp
+			;;
+	esac										
+}
+
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+#++++++++++++           READ ARGS AND START PROGRAM          ++++++++++++++++
+#++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+main $1 $2
