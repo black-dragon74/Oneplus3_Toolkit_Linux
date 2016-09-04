@@ -20,6 +20,7 @@ function printHeader(){
 function printHelp(){
 	printHeader
 	echo usage\: toolkit [help]\|[-h] Prints help\(this\) information.
+	echo \ \ \ \ \ \ \ toolkit [install][force]\|[-i][--force] Installs/Force Installs the toolkit to system.
 	echo \ \ \ \ \ \ \ toolkit [backup]\|[-b] Generates a backup of your Anroid.
 	echo \ \ \ \ \ \ \ toolkit [restore]\|[-r] Restores created backup.
 	echo \ \ \ \ \ \ \ toolkit [unlock]\|[-u] Unlock the bootloader of your device.
@@ -45,6 +46,7 @@ function checkADB(){
 	if [ -e /usr/bin/adb ];
 		then
 		# Consume
+		sleep 0.5
 	else
 		echo -e "ADB Not found."
 		abortError
@@ -55,9 +57,11 @@ function checkFastboot(){
 	if [ -e /usr/bin/fastboot ];
 		then
 		# Consume
+		sleep 0.5
 	else
 		echo -e "Fastboot not found."
 		abortError
+	fi
 }
 
 function checkVersion(){
@@ -83,5 +87,52 @@ function updateScript(){
 		sudo cp ./toolkit /usr/bin/
 		echo -e "Script updated."
 		rm ./toolkit
+	fi
+}
+
+function installToolkit(){
+	# Check if the install is forced
+	if [[ $2 == "force" || $2 == "--force" ]];
+		then
+		case $2 in
+			[fF][oO][rR][cC][eE]|[-][-][fF][oO][rR][cC][eE] )
+				echo -e "Forcing toolkit install."
+				# Check toolkit in local dir
+				if [ -e ./toolkit ];
+					then
+					sudo rm /usr/bin/toolkit
+					sudo cp ./toolkit /usr/bin/
+					sudo chmod 755 /usr/bin/toolkit
+					echo -e "Toolkit installed."
+				else
+					echo -e "Toolkit not found in current working dir."
+					abortError
+				fi
+				;;
+			* )	
+				echo -e "Invalid option $2"
+				;;
+		esac
+	else
+		echo -e "Trying to install the toolkit."
+		# Check if installed already.
+		if [ -e /usr/bin/toolkit ];
+			then
+			echo -e "Toolkit is already installed."
+			echo -e "It is recommended to run update utility."
+			echo -e "Else you can force the update by using --force arg."
+		else
+			echo -e "Installing toolkit."
+			# Check toolkit
+			if [ -e ./toolkit ];
+				then
+				sudo cp ./toolkit /usr/bin/
+				sudo chmod 755 /usr/bin/toolkit
+				echo -e "Toolkit Installed."
+			else
+				echo -e "Toolkit not found in current dir."
+				abortError
+			fi
+		fi
 	fi
 }
