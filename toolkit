@@ -31,11 +31,30 @@ function printHelp(){
 }
 
 function abortError(){
-	echo -e "Some error occoured. Aborting..."
+	echo -e "Error occoured. Aborting..."
 	exit
 }
 
 function abortSuccess(){
 	echo -e "Program completed successfully..."
 	exit
+}
+
+function checkADB(){
+	if [ -e /usr/bin/adb ];
+		then
+		# Consume
+	else
+		echo -e "ADB Not found."
+		abortError
+	fi
+}
+
+function checkFastboot(){
+	if [ -e /usr/bin/fastboot ];
+		then
+		# Consume
+	else
+		echo -e "Fastboot not found."
+		abortError
 }
