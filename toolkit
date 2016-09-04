@@ -167,6 +167,21 @@ function checkInstall(){
 	fi
 }
 
+function createBackup(){
+	printHeader
+	checkADB
+	checkFastboot
+	checkInstall
+	adb kill-server
+	echo -e "Waiting for Device."
+	adb wait-for-device
+	echo -e "Device found. Backing up."
+	adb backup -apk -shared -all
+	sleep 5
+	echo -e "Backup Complete."
+	abortSuccess
+}
+
 function main(){
 	case $1 in
 		[iI][nN][sS][tT][aA][lL]|[-][iI] )
