@@ -154,3 +154,15 @@ function verifyUpdate(){
 	fi
 	rm ./scriptVersion
 }
+
+function checkInstall(){
+	if [ -e /usr/bin/toolkit ];
+		then
+		#Proceed
+		sleep 0.5
+	else
+		echo -e "Toolkit is not installed."
+		echo -e "Please run toolkit -i to install from downloaded directory."
+		abortError
+	fi
+}
