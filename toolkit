@@ -63,3 +63,25 @@ function checkFastboot(){
 function checkVersion(){
 	echo -e "$scriptVersion"
 }
+
+function updateScript(){
+	echo -e "Checking version on the remote."
+	cd $home
+	curl -o scriptVersion https://raw.githubusercontent.com/black-dragon74/Oneplus3_Toolkit_Linux/master/scriptVersion &>/dev/null
+	chmod 755 ./scriptVersion
+	if [ $(toolkit -v) == $(cat ./scriptVersion)];
+		then
+		echo -e "Script is already updated."
+		rm ./scriptVersion
+	else
+		echo -e "Updating Script..."
+		echo -e "Downloading latest version."
+		cd $home
+		curl -o toolkit https://raw.githubusercontent.com/black-dragon74/Oneplus3_Toolkit_Linux/master/toolkit &>/dev/null
+		sudo rm /usr/bin/toolkit
+		chmod 755 ./toolkit
+		sudo cp ./toolkit /usr/bin/
+		echo -e "Script updated."
+		rm ./toolkit
+	fi
+}
