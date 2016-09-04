@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Oneplus 3 root tookit version 1.0
+
+# Website: https://j2java.net
+# Source: https://github.com/black-dragon74/Oneplus3_Toolkit_Linux
+# Author: black.dragon74
+
+# Variable Declarations
+author=black.dragon74
+scriptVersion=1.0
+home=$(echo $HOME)
+mName=$(uname -n)
+
+# Functions for the program. Let's start by decalring some basic functions.
+function printHeader(){
+	echo -e "Oneplus 3 tookit version $scriptVersion running on $mName."
+}
+
+function printHelp(){
+	printHeader
+	echo usage\: toolkit [help]\|[-h] Prints help\(this\) information.
+	echo \ \ \ \ \ \ \ toolkit [backup]\|[-b] Generates a backup of your Anroid.
+	echo \ \ \ \ \ \ \ toolkit [restore]\|[-r] Restores created backup.
+	echo \ \ \ \ \ \ \ toolkit [unlock]\|[-u] Unlock the bootloader of your device.
+	echo \ \ \ \ \ \ \ toolkit [lock]\|[-l] Locks the bootloader of your device.
+	echo \ \ \ \ \ \ \ toolkit [twrp]\|[-t] Flashes TWRP to your device.
+	echo \ \ \ \ \ \ \ toolkit [boottwrp]\|[-bt] Hotboots TWRP without actually flashing it.
+	echo \ \ \ \ \ \ \ toolkit [stock]\|[-s] Flashes stock recovery to your device.
+	echo \ \ \ \ \ \ \ tookit [check]\ \[-c] Check the bootloader status.
+}
+
+function abortError(){
+	echo -e "Some error occoured. Aborting..."
+	exit
+}
+
+function abortSuccess(){
+	echo -e "Program completed successfully..."
+	exit
+}
