@@ -8,13 +8,13 @@
 
 # Variable Declarations
 author=black.dragon74
-scriptVersion=1.1
+sVersion=1.1
 home=$(echo $HOME)
 mName=$(uname -n)
 
 # Functions for the program. Let's start by decalring some basic functions.
 function printHeader(){
-	echo -e "Oneplus 3 tookit version $scriptVersion running on $mName."
+	echo -e "Oneplus 3 tookit version $sVersion running on $mName."
 }
 
 function printHelp(){
@@ -65,7 +65,7 @@ function checkFastboot(){
 }
 
 function checkVersion(){
-	echo -e "$scriptVersion"
+	echo -e "$sVersion"
 }
 
 function updateScript(){
@@ -73,7 +73,7 @@ function updateScript(){
 	cd $home
 	curl -o scriptVersion https://raw.githubusercontent.com/black-dragon74/Oneplus3_Toolkit_Linux/master/scriptVersion &>/dev/null
 	chmod 755 ./scriptVersion
-	if [ $(toolkit -v) == $(cat ./scriptVersion)];
+	if [ $(cat ./scriptVersion) == $(toolkit -v) ];
 		then
 		echo -e "Script is already updated."
 		rm ./scriptVersion
@@ -217,6 +217,9 @@ function main(){
 		[uU][pP][dD][aA][tT][eE]|[-][uU][pP] )
 			updateScript
 			;;
+		[-][vV] )
+			checkVersion
+			;;	
 		* )
 			printHelp
 			;;
