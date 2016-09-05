@@ -104,7 +104,9 @@ function installToolkit(){
 					sudo rm /usr/bin/toolkit
 					sudo cp ./toolkit /usr/bin/
 					sudo chmod 755 /usr/bin/toolkit
-					sudo dpkg -i ./*.deb &>/dev/null
+					sudo cp ./adb /usr/bin &>/dev/null
+					sudo cp ./fastboot /usr/bin &>/dev/null
+					sudo chmod 755 /usr/bin/adb && sudo chmod 755 /usr/bin/fastboot
 					rm $home/.android/adb_usb.ini
 					echo "0x2a70" >> $home/.android/adb_usb.ini
 					echo -e "Toolkit installed."
@@ -132,7 +134,9 @@ function installToolkit(){
 				then
 				sudo cp ./toolkit /usr/bin/
 				sudo chmod 755 /usr/bin/toolkit
-				sudo dpkg -i ./*.deb &>/dev/null
+				sudo cp ./adb /usr/bin &>/dev/null
+				sudo cp ./fastboot /usr/bin &>/dev/null
+				sudo chmod 755 /usr/bin/adb && sudo chmod 755 /usr/bin/fastboot
 				rm $home/.android/adb_usb.ini
 				echo "0x2a70" >> $home/.android/adb_usb.ini
 				echo -e "Toolkit Installed."
