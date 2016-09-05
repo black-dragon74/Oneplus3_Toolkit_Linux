@@ -172,10 +172,7 @@ function checkInstall(){
 }
 
 function createBackup(){
-	printHeader
-	checkADB
-	checkFastboot
-	checkInstall
+	checkReqs
 	echo -e "Waiting for Device."
 	adb wait-for-device &>/dev/null
 	echo -e "Device found. Backing up."
