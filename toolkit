@@ -176,8 +176,10 @@ function createBackup(){
 	echo -e "Waiting for Device."
 	adb wait-for-device &>/dev/null
 	echo -e "Device found. Backing up."
+	cd $home
 	adb backup -all
 	echo -e "Backup Complete."
+	echo -e "File will be located in $home"
 	abortSuccess
 }
 
