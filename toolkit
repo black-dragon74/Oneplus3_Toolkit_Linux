@@ -184,6 +184,13 @@ function createBackup(){
 	abortSuccess
 }
 
+function checkReqs(){
+	printHeader
+	checkADB
+	checkFastboot
+	checkInstall
+}
+
 function main(){
 	case $1 in
 		[iI][nN][sS][tT][aA][lL]|[-][iI] )
