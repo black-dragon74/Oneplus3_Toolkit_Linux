@@ -176,7 +176,6 @@ function createBackup(){
 	checkADB
 	checkFastboot
 	checkInstall
-	adb kill-server
 	echo -e "Waiting for Device."
 	adb wait-for-device
 	echo -e "Device found. Backing up."
