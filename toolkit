@@ -210,6 +210,21 @@ function unlockDevice(){
 	adb reboot-bootloader
 	fastboot oem unlock
 	fastboot reboot
+	adb wait-for-device &>/dev/null
+	echo -e "Done.."
+	abortSuccess
+}
+
+function lockDevice(){
+	checkReqs
+	echo -e "Waiting for device."
+	adb wait-for-device &>/dev/null
+	echo -e "Device found. Proceeding.."
+	echo -e "Rebooting Device..."
+	adb reboot-bootloader
+	fastboot oem lock
+	fastboot reboot
+	adb wait-for-device &>/dev/null
 	echo -e "Done.."
 	abortSuccess
 }
