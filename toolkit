@@ -189,6 +189,18 @@ function createBackup(){
 	abortSuccess
 }
 
+function restoreBackup(){
+	checkReqs
+	echo -e "Waiting for device."
+	adb wait-for-device &>/dev/null
+	echo -e "Device found. Proceeding."
+	read -p "Drag the backup file to the terminal window. " filename
+	echo -e "Trying to restore the file.."
+	adb restore $filename
+	echo -e "Restored the backup."
+	abortSuccess
+}
+
 function checkReqs(){
 	printHeader
 	checkADB
