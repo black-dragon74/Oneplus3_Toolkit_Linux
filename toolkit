@@ -201,6 +201,19 @@ function restoreBackup(){
 	abortSuccess
 }
 
+function unlockDevice(){
+	checkReqs
+	echo -e "Waiting for device."
+	adb wait-for-device &>/dev/null
+	echo -e "Device found. Proceeding.."
+	echo -e "Rebooting device.."
+	adb reboot-bootloader
+	fastboot oem unlock
+	fastboot reboot
+	echo -e "Done.."
+	abortSuccess
+}
+
 function checkReqs(){
 	printHeader
 	checkADB
