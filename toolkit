@@ -117,13 +117,13 @@ function installToolkit(){
 						# Remove
 						sudo rm -f $rulefile
 						sudo touch $rulefile
-						sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\" " >> $rulefile
-						sudo chmod a+r $rulefile
+						sudo chmod 777 $rulefile
+						sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\"" >> $rulefile
 						# Done
 					else
 						sudo touch $rulefile
-						sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\" " >> $rulefile
-						sudo chmod a+r $rulefile
+						sudo chmod 777 $rulefile
+						sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\"" >> $rulefile
 					fi
 					echo -e "Toolkit installed."
 				else
@@ -162,13 +162,13 @@ function installToolkit(){
 					# Remove
 					sudo rm -f $rulefile
 					sudo touch $rulefile
-					sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\" " >> $rulefile
-					sudo chmod a+r $rulefile
+					sudo chmod 777 $rulefile
+					sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\"" >> $rulefile
 					# Done
 				else
 					sudo touch $rulefile
-					sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\" " >> $rulefile
-					sudo chmod a+r $rulefile
+					sudo chmod 777 $rulefile
+					sudo echo -e "SUBSYSTEM==\"usb\", ATTR{idVendor}==\"2a70\", MODE=\"0666\", GROUP=\"plugdev\"" >> $rulefile
 				fi
 				echo -e "Toolkit Installed."
 			else
